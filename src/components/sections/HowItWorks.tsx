@@ -131,7 +131,7 @@ export default function HowItWorks() {
               </div>
 
               <button className="mt-2 w-full rounded-xl bg-[#0B7A5A] py-3.5 font-semibold text-white shadow-lg shadow-[#0B7A5A]/20 transition hover:bg-[#08664b]">
-                <Link href="/loan/apply">Check Eligibility</Link>
+                <Link href="/apply">Check Eligibility</Link>
               </button>
 
               <p className="flex items-center justify-center gap-1.5 text-xs text-gray-400">

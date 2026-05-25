@@ -53,7 +53,7 @@ export default function NavbarPage() {
           </button>
 
           <Link
-            href={"/loan/apply"}
+            href={"/apply"}
             className="px-5 py-2 rounded-md bg-[#0B7A5A] text-white font-semibold shadow-md hover:bg-[#08664b] hover:shadow-lg transition-all duration-300"
           >
             Apply Now
@@ -107,7 +107,7 @@ export default function NavbarPage() {
                 </button>
 
                 <button className="w-full py-3 rounded-xl bg-yellow-400 text-black font-semibold">
-                  Apply Now
+                  <Link href="/apply">Apply Now</Link>
                 </button>
               </div>
             </div>

@@ -5,7 +5,7 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 
 const points = [
   "Age between 21 and 60 years",
-  "Minimum monthly income of ₹15,000",
+  "Minimum monthly income of $180",
   "Valid PAN and Aadhaar card",
   "Active bank account for 6+ months",
 ];
@@ -72,7 +72,7 @@ export default function Eligibility() {
           </div>
 
           <Link
-            href="/loan/apply"
+            href="/apply"
             className="mt-8 inline-block rounded-xl bg-[#0B7A5A] px-8 py-3.5 font-semibold text-white shadow-lg shadow-[#0B7A5A]/20 transition hover:bg-[#08664b]"
           >
             Check Eligibility

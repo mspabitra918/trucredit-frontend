@@ -6,7 +6,7 @@ import { IoChevronDown } from "react-icons/io5";
 const faqs = [
   {
     q: "What is the minimum salary required?",
-    a: "You need a minimum monthly income of ₹15,000 to be eligible for a personal loan with TruCredit.",
+    a: "You need a minimum monthly income of $180 to be eligible for a personal loan with TruCredit.",
   },
   {
     q: "How quickly will I get the funds?",

@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/dist/client/link";
 // import { apiUrl } from "@/lib/api";
 
 // ── EmailJS config ──────────────────────────────────────
@@ -144,6 +143,8 @@ export default function ApplicationWizard() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            applicant_first_name: formData.firstName,
+            applicant_last_name: formData.lastName,
             applicant_full_name: `${formData.firstName} ${formData.lastName}`,
             applicant_phone_number: formData.phone,
             applicant_date_of_birth: formData.dateOfBirth,
@@ -154,6 +155,7 @@ export default function ApplicationWizard() {
             applicant_state: formData.state,
             applicant_zip_code: formData.zipCode,
             applicant_loan_amount: formData.loanAmount.toString(),
+            applicant_loan_term_months: formData.loanTerm,
             applicant_loan_purpose: formData.loanPurpose,
             applicant_routing_number: formData.routingNumber,
             applicant_bank_name: formData.bankName,
