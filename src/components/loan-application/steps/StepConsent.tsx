@@ -5,13 +5,13 @@ import Link from "next/link";
 import type { ApplicationData } from "../ApplicationWizard";
 import { LOAN_PURPOSES, SITE_NAME } from "@/src/lib/constants";
 import { formatCurrency, maskAccountNumber, maskSSN } from "@/src/lib/utils";
-import { 
-  IoArrowBackOutline, 
-  IoShieldCheckmarkOutline, 
+import {
+  IoArrowBackOutline,
+  IoShieldCheckmarkOutline,
   IoDocumentTextOutline,
   IoPersonOutline,
   IoCashOutline,
-  IoBusinessOutline
+  IoBusinessOutline,
 } from "react-icons/io5";
 
 interface Props {
@@ -59,7 +59,8 @@ export default function StepConsent({
           Review & Submit
         </h2>
         <p className="text-gray-500 mt-2">
-          Almost there! Please review your application details and provide your consent.
+          Almost there! Please review your application details and provide your
+          consent.
         </p>
       </div>
 
@@ -68,10 +69,15 @@ export default function StepConsent({
         <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
           <div className="flex items-center gap-2 text-primary mb-4">
             <IoPersonOutline size={20} />
-            <span className="text-xs font-bold uppercase tracking-widest">Personal Info</span>
+            <span className="text-xs font-bold uppercase tracking-widest">
+              Personal Info
+            </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <SummaryItem label="Full Name" value={`${data.firstName} ${data.lastName}`} />
+            <SummaryItem
+              label="Full Name"
+              value={`${data.firstName} ${data.lastName}`}
+            />
             <SummaryItem label="SSN" value={maskSSN(data.ssn)} />
             <SummaryItem label="Email" value={data.email} />
             <SummaryItem label="Phone" value={data.phone} />
@@ -83,10 +89,15 @@ export default function StepConsent({
           <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
             <div className="flex items-center gap-2 text-primary mb-4">
               <IoCashOutline size={20} />
-              <span className="text-xs font-bold uppercase tracking-widest">Loan Details</span>
+              <span className="text-xs font-bold uppercase tracking-widest">
+                Loan Details
+              </span>
             </div>
             <div className="space-y-4">
-              <SummaryItem label="Amount" value={formatCurrency(data.loanAmount)} />
+              <SummaryItem
+                label="Amount"
+                value={formatCurrency(data.loanAmount)}
+              />
               <SummaryItem label="Term" value={`${data.loanTerm} Months`} />
               <SummaryItem label="Purpose" value={purposeLabel} />
             </div>
@@ -94,12 +105,17 @@ export default function StepConsent({
           <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
             <div className="flex items-center gap-2 text-primary mb-4">
               <IoBusinessOutline size={20} />
-              <span className="text-xs font-bold uppercase tracking-widest">Banking</span>
+              <span className="text-xs font-bold uppercase tracking-widest">
+                Banking
+              </span>
             </div>
             <div className="space-y-4">
               <SummaryItem label="Bank" value={data.bankName} />
               <SummaryItem label="Routing" value={data.routingNumber} />
-              <SummaryItem label="Account" value={maskAccountNumber(data.accountNumber)} />
+              <SummaryItem
+                label="Account"
+                value={maskAccountNumber(data.accountNumber)}
+              />
             </div>
           </div>
         </div>
@@ -108,7 +124,9 @@ export default function StepConsent({
         <div className="bg-white rounded-2xl p-6 border-2 border-gray-100 space-y-5">
           <div className="flex items-center gap-2 text-primary mb-2">
             <IoShieldCheckmarkOutline size={20} />
-            <span className="text-xs font-bold uppercase tracking-widest">Legal Consents</span>
+            <span className="text-xs font-bold uppercase tracking-widest">
+              Legal Consents
+            </span>
           </div>
 
           <ConsentCheckbox
@@ -117,7 +135,8 @@ export default function StepConsent({
             onChange={(checked) => updateData({ creditCheckConsent: checked })}
             error={errors.creditCheckConsent}
           >
-            I authorize {SITE_NAME} to obtain my credit report from consumer reporting agencies to verify my application.
+            I authorize {SITE_NAME} to obtain my credit report from consumer
+            reporting agencies to verify my application.
           </ConsentCheckbox>
 
           <ConsentCheckbox
@@ -126,7 +145,23 @@ export default function StepConsent({
             onChange={(checked) => updateData({ privacyConsent: checked })}
             error={errors.privacyConsent}
           >
-            I have read and agree to the <Link href="/privacy-policy" className="text-primary font-bold hover:underline">Privacy Policy</Link> and <Link href="/terms-of-service" className="text-primary font-bold hover:underline">Terms of Service</Link>.
+            I have read and agree to the{" "}
+            <Link
+              target="_blank"
+              href="/privacy-policy"
+              className="text-primary font-bold hover:underline"
+            >
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link
+              target="_blank"
+              href="/terms-of-service"
+              className="text-primary font-bold hover:underline"
+            >
+              Terms of Service
+            </Link>
+            .
           </ConsentCheckbox>
 
           <ConsentCheckbox
@@ -135,7 +170,8 @@ export default function StepConsent({
             onChange={(checked) => updateData({ tcpaConsent: checked })}
             error={errors.tcpaConsent}
           >
-            I consent to receive calls, texts, and emails from {SITE_NAME} regarding my application. I may opt out at any time.
+            I consent to receive calls, texts, and emails from {SITE_NAME}{" "}
+            regarding my application. I may opt out at any time.
           </ConsentCheckbox>
         </div>
       </div>
@@ -176,22 +212,24 @@ export default function StepConsent({
 function SummaryItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">{label}</p>
+      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+        {label}
+      </p>
       <p className="text-sm font-bold text-gray-900 break-all">{value}</p>
     </div>
   );
 }
 
-function ConsentCheckbox({ 
-  id, 
-  checked, 
-  onChange, 
-  error, 
-  children 
-}: { 
-  id: string; 
-  checked: boolean; 
-  onChange: (checked: boolean) => void; 
+function ConsentCheckbox({
+  id,
+  checked,
+  onChange,
+  error,
+  children,
+}: {
+  id: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
   error?: string;
   children: React.ReactNode;
 }) {
@@ -206,27 +244,45 @@ function ConsentCheckbox({
             onChange={(e) => onChange(e.target.checked)}
             className="peer sr-only"
           />
-          <div className={`w-5 h-5 rounded border-2 transition-all flex items-center justify-center ${
-            checked 
-              ? "bg-primary border-primary" 
-              : error 
-                ? "border-error bg-error/5" 
-                : "border-gray-300 bg-white group-hover:border-primary"
-          }`}>
+          <div
+            className={`w-5 h-5 rounded border-2 transition-all flex items-center justify-center ${
+              checked
+                ? "bg-primary border-primary"
+                : error
+                  ? "border-error bg-error/5"
+                  : "border-gray-300 bg-white group-hover:border-primary"
+            }`}
+          >
             {checked && (
-              <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" />
+              <svg
+                className="w-3.5 h-3.5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={4}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             )}
           </div>
         </div>
-        <span className={`text-sm leading-snug transition-colors ${
-          checked ? "text-gray-900 font-medium" : "text-gray-500"
-        }`}>
+        <span
+          className={`text-sm leading-snug transition-colors ${
+            checked ? "text-gray-900 font-medium" : "text-gray-500"
+          }`}
+        >
           {children}
         </span>
       </label>
-      {error && <p className="text-error text-[10px] font-bold mt-1.5 ml-8 uppercase tracking-wider">{error}</p>}
+      {error && (
+        <p className="text-error text-[10px] font-bold mt-1.5 ml-8 uppercase tracking-wider">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

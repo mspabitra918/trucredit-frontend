@@ -11,7 +11,16 @@ export const personalInfoSchema = z.object({
     .min(2, "Last name must be at least 2 characters")
     .max(50, "Last name must be less than 50 characters")
     .regex(/^[a-zA-Z\s'-]+$/, "Last name contains invalid characters"),
-  // email: z.string().email("Please enter a valid email address"),
+  email: z.string().email("Please enter a valid email address"),
+  ssn: z
+    .string()
+    .min(1, "This field is required")
+    .refine(
+      (val) =>
+        // US SSN: XXX-XX-XXXX
+        /^\d{3}-?\d{2}-?\d{4}$/.test(val),
+      { message: "Please enter a valid identification number" },
+    ),
   phone: z
     .string()
     .min(10, "Please enter a valid phone number")

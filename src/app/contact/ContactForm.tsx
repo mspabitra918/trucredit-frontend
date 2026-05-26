@@ -11,12 +11,32 @@ export default function ContactForm() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    alert(
-      `Name: ${name}, Mobile: ${mobile}, Email: ${email}, Subject: ${subject}, Message: ${message}`,
-    );
-    // Handle form submission logic here (e.g., send data to backend or email service)
-    // alert("Message sent! We will get back to you shortly.");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        full_name: name,
+        email,
+        number: mobile,
+        subject,
+        message,
+      }),
+    });
+
+    if (res.ok) {
+      alert("Message sent successfully!");
+      setName("");
+      setMobile("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } else {
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
