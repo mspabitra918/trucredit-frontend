@@ -17,8 +17,9 @@ export default function AdminMessagesPage() {
   const [error, setError] = useState<string | null>(null);
 
   const [search, setSearch] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [selected, setSelected] = useState<AdminMessage | null>(null);
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
 
   async function load() {
     setLoading(true);
@@ -36,13 +37,23 @@ export default function AdminMessagesPage() {
   }
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500); // 500ms debounce
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date]);
+  }, [date, debouncedSearch]);
 
   const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
+    const q = debouncedSearch.trim().toLowerCase();
+
     if (!q) return messages;
+
     return messages.filter(
       (m) =>
         m.full_name.toLowerCase().includes(q) ||
@@ -50,11 +61,11 @@ export default function AdminMessagesPage() {
         m.subject.toLowerCase().includes(q) ||
         m.message.toLowerCase().includes(q),
     );
-  }, [messages, search]);
+  }, [messages, debouncedSearch]);
 
   function resetFilters() {
     setSearch("");
-    setDate("");
+    setDate(new Date().toISOString().split("T")[0]);
   }
 
   return (
