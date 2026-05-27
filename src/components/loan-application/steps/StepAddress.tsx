@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 import type { ApplicationData } from "../ApplicationWizard";
 import { addressSchema, extractFieldErrors } from "@/src/lib/validation";
 import { US_STATES } from "@/src/lib/constants";

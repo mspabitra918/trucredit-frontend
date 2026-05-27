@@ -4,7 +4,7 @@ import {
   IoDocumentTextOutline,
   IoShieldCheckmark,
 } from "react-icons/io5";
-import { FaDollarSign, FaRupeeSign } from "react-icons/fa";
+import { FaDollarSign } from "react-icons/fa";
 
 const badges = [
   { icon: IoTrendingDown, label: "Low Interest" },

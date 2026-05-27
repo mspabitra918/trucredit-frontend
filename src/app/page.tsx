@@ -5,7 +5,6 @@ import HowItWorks from "../components/sections/HowItWorks";
 import Eligibility from "../components/sections/Eligibility";
 import Testimonials from "../components/sections/Testimonials";
 import Faq from "../components/sections/Faq";
-import Footer from "../components/layout/Footer";
 
 export default function Home() {
   return (

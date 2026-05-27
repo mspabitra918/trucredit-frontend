@@ -1,5 +1,3 @@
-import Footer from "@/src/components/layout/Footer";
-import NavbarPage from "@/src/components/layout/Navber";
 import ApplicationWizard from "@/src/components/loan-application/ApplicationWizard";
 import PageHeader from "@/src/components/sections/PageHeader";
 import type { Metadata } from "next";

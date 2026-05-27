@@ -345,7 +345,7 @@ export default function ApplicationWizard() {
           {/* Connecting Line Background */}
           <div className="absolute top-5 left-0 w-full h-0.5 bg-gray-200 -translate-y-1/2" />
 
-          {STEPS.map((step, index) => {
+          {STEPS.map((step) => {
             const isCompleted = step.id < currentStep;
             const isCurrent = step.id === currentStep;
 

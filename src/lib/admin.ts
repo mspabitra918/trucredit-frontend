@@ -36,7 +36,14 @@ export async function adminLogin(email: string, password: string) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-    const result = (await res.json().catch(() => ({}))) as any;
+    type LoginResponse = {
+      token?: string;
+      message?: string;
+      email?: string;
+      user?: { email?: string };
+      data?: LoginResponse;
+    };
+    const result = (await res.json().catch(() => ({}))) as LoginResponse;
     const data = result.data || result;
 
     if (!res.ok || !data.token) {
