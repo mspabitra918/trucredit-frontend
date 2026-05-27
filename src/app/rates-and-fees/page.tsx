@@ -13,52 +13,64 @@ export const metadata: Metadata = {
 };
 
 const heroStats = [
-  { value: "10.5%", label: "Starting rate (p.a.)" },
-  { value: "₹0", label: "Upfront fees" },
-  { value: "12–60", label: "Months tenure" },
+  { value: "10%", label: "Starting rate (p.a.)" },
+  { value: "$0", label: "Upfront fees" },
+  { value: "24–60", label: "Months tenure" },
 ];
 
 const feeSchedule = [
-  { type: "Origination fee", amount: "₹0" },
-  { type: "Upfront processing fee", amount: "₹0" },
+  { type: "Origination fee", amount: "$0" },
+  { type: "Upfront processing fee", amount: "$0" },
   { type: "Prepayment / foreclosure", amount: "None" },
-  { type: "Late payment fee", amount: "₹500 (after grace period)" },
-  { type: "Application fee", amount: "₹0" },
+  { type: "Late payment fee", amount: "$50 (after grace period)" },
+  { type: "Application fee", amount: "$0" },
   { type: "GST", amount: "As applicable" },
 ];
 
 const rateTiers = [
-  { product: "Personal Loan", rate: "10.5% – 18%", range: "₹50,000 – ₹15,00,000" },
-  { product: "Business Loan", rate: "12% – 22%", range: "₹1,00,000 – ₹50,00,000" },
-  { product: "Home Loan", rate: "6.5% – 9%", range: "₹5,00,000 – ₹2,00,00,000" },
-  { product: "Education Loan", rate: "8% – 13%", range: "₹50,000 – ₹40,00,000" },
+  { product: "Personal Loan", rate: "10%", range: "$2,000 – $10,000" },
+  { product: "Business Loan", rate: "10%", range: "$2,000 – $10,000" },
+  { product: "Home Loan", rate: "10%", range: "$2,000 – $10,000" },
+  { product: "Education Loan", rate: "10%", range: "$2,000 – $10,000" },
 ];
 
 const examples = [
   {
-    amount: "₹1,00,000",
-    detail: "for 24 months at 10.5% p.a.",
-    emi: "₹4,635",
+    amount: "$2,000",
+    detail: "for 24 months at 10% p.a.",
+    emi: "$2,214.96",
     note: "Less than most monthly rent commitments.",
   },
   {
-    amount: "₹3,00,000",
-    detail: "for 36 months at 11% p.a.",
-    emi: "₹9,821",
+    amount: "$5,000",
+    detail: "for 36 months at 10% p.a.",
+    emi: "$5,808.09",
     note: "A comfortable EMI for salaried borrowers.",
   },
   {
-    amount: "₹5,00,000",
-    detail: "for 48 months at 12% p.a.",
-    emi: "₹13,167",
+    amount: "$10,000",
+    detail: "for 48 months at 10% p.a.",
+    emi: "$12,174.04",
     note: "Spread larger needs over a longer term.",
   },
 ];
 
 const trust = [
-  { icon: IoLockClosedOutline, title: "256-bit encryption", desc: "Your data is secured end-to-end." },
-  { icon: IoShieldCheckmarkOutline, title: "₹0 upfront guarantee", desc: "You never pay before disbursal." },
-  { icon: IoFlashOutline, title: "Instant decisions", desc: "Real-time eligibility, no waiting." },
+  {
+    icon: IoLockClosedOutline,
+    title: "256-bit encryption",
+    desc: "Your data is secured end-to-end.",
+  },
+  {
+    icon: IoShieldCheckmarkOutline,
+    title: "$0 upfront guarantee",
+    desc: "You never pay before disbursal.",
+  },
+  {
+    icon: IoFlashOutline,
+    title: "Instant decisions",
+    desc: "Real-time eligibility, no waiting.",
+  },
 ];
 
 export default function RatesAndFeesPage() {
@@ -125,7 +137,9 @@ export default function RatesAndFeesPage() {
             <thead className="bg-[#0B7A5A] text-sm text-white">
               <tr>
                 <th className="px-6 py-4 font-semibold">Product</th>
-                <th className="px-6 py-4 font-semibold">Interest Rate (p.a.)</th>
+                <th className="px-6 py-4 font-semibold">
+                  Interest Rate (p.a.)
+                </th>
                 <th className="px-6 py-4 font-semibold">Loan Range</th>
               </tr>
             </thead>

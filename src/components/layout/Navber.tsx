@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Rates & Fees", href: "/rates-and-fees" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
-  { label: "Admin", href: "/admin" },
+  // { label: "Admin", href: "/admin" },
 ];
 
 export default function NavbarPage() {
@@ -49,9 +49,9 @@ export default function NavbarPage() {
 
         {/* Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="px-5 py-2 rounded-md border border-[#0B7A5A] text-[#0B7A5A] font-semibold hover:bg-[#0B7A5A] hover:text-white transition-all duration-300">
+          {/* <button className="px-5 py-2 rounded-md border border-[#0B7A5A] text-[#0B7A5A] font-semibold hover:bg-[#0B7A5A] hover:text-white transition-all duration-300">
             Login
-          </button>
+          </button> */}
 
           <Link
             href={"/apply"}
@@ -103,9 +103,9 @@ export default function NavbarPage() {
 
               {/* Buttons */}
               <div className="flex flex-col gap-4 mt-10 w-[80%]">
-                <button className="w-full py-3 rounded-xl bg-white text-[#0B7A5A] font-semibold">
+                {/* <button className="w-full py-3 rounded-xl bg-white text-[#0B7A5A] font-semibold">
                   Login
-                </button>
+                </button> */}
 
                 <button className="w-full py-3 rounded-xl bg-yellow-400 text-black font-semibold">
                   <Link href="/apply">Apply Now</Link>

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "TruCredit — Loans made Simple & Easy",
   description:
     "Fast approvals, transparent rates, and zero hidden charges. Check your eligibility in 2 minutes with TruCredit.",
+  // icons: {
+  //   icon: "/Screenshot 2026-05-27 at 15.15.01.png",
+  // },
 };
 
 export default function RootLayout({

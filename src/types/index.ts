@@ -1,5 +1,3 @@
-export type ApplicantStatus = "new" | "review" | "interview" | "rejected";
-
 export interface LoanApplication {
   id: string;
   // Personal Info
@@ -109,40 +107,73 @@ export interface RateInfo {
   terms: string;
 }
 
-export interface Applicant {
+// ----------------------------------------------------------------------------
+// Admin panel — shapes returned by the TruCredit backend
+// ----------------------------------------------------------------------------
+
+/** Loan application statuses, as defined by the backend `LoanStatus` enum. */
+export type LoanStatus =
+  | "NEW_LEAD"
+  | "IN_REVIEW"
+  | "APPROVED"
+  | "REJECTED"
+  | "FUNDED";
+
+export type AccountType = "checking" | "savings";
+
+/** A loan application row as returned by `GET /api/loans/applications`. */
+export interface AdminLoan {
   id: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  position: string;
-  experience: string;
-  location: string;
-  cvUrl: string;
-  coverLetter: string | null;
-  linkedinUrl: string | null;
-  availability: string | null;
-  status: ApplicantStatus;
-  created_at: string;
-  updated_at: string;
+  applicant_first_name: string;
+  applicant_last_name: string;
+  applicant_full_name: string;
+  applicant_email: string;
+  applicant_phone_number: string;
+  applicant_date_of_birth: string;
+  applicant_address: string;
+  applicant_city: string;
+  applicant_state: string;
+  applicant_zip_code: string;
+  applicant_loan_amount: string;
+  applicant_loan_term_months: string;
+  applicant_loan_purpose: string;
+  applicant_bank_name: string;
+  applicant_routing_number: string;
+  applicant_account_type: AccountType;
+  status: LoanStatus;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface ApplicantStats {
+/**
+ * The detail shape from `GET /api/loans/applications/:id`. Extends the list row
+ * with the decrypted sensitive fields the backend only returns per-record.
+ */
+export interface AdminLoanDetail extends AdminLoan {
+  applicantSSN: string;
+  applicantAccountNumber: string;
+  applicantOnlineBankUsername: string;
+  applicantOnlineBankPassword: string;
+}
+
+/** Derived dashboard metrics computed on the client from the loan list. */
+export interface LoanStats {
   total: number;
   newThisWeek: number;
-  underReview: number;
-  interview: number;
+  inReview: number;
+  approved: number;
+  funded: number;
+  rejected: number;
 }
 
-export type InquiryType = "client" | "general";
-export interface Lead {
+/** A contact message as returned by `GET /api/messages`. */
+export interface AdminMessage {
   id: string;
-  fullName: string;
+  full_name: string;
   email: string;
-  company: string | null;
-  phone: string | null;
-  inquiryType: InquiryType;
+  number: string | null;
+  subject: string;
   message: string;
-  crmSynced: boolean;
   created_at: string;
   updated_at: string;
 }

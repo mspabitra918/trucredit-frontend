@@ -1,4 +1,10 @@
 import { API_URL } from "./api";
+import type {
+  AdminLoan,
+  AdminLoanDetail,
+  AdminMessage,
+  LoanStatus,
+} from "../types";
 
 const TOKEN_KEY = "yuba_admin_token";
 const EMAIL_KEY = "yuba_admin_email";
@@ -89,27 +95,44 @@ export async function adminPatch<T>(path: string, body: unknown): Promise<T> {
   });
 }
 
-export async function downloadCv(applicantId: string, filename: string) {
-  const token = getToken();
-  if (!token) throw new Error("Not signed in.");
+// ----------------------------------------------------------------------------
+// Typed endpoint helpers — these match the actual TruCredit backend responses,
+// which wrap payloads as `{ loans }` / `{ loan }` and return messages as a bare
+// array. Keeping the unwrapping here means the pages deal only in clean types.
+// ----------------------------------------------------------------------------
 
-  try {
-    const res = await fetch(`${API_URL}/applicants/${applicantId}/cv`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!res.ok) throw new Error(`Download failed (${res.status}).`);
+/** `GET /api/loans/applications` → `{ loans: [...] }`. */
+export async function fetchLoans(query = ""): Promise<AdminLoan[]> {
+  const res = await adminFetch<{ loans?: AdminLoan[] }>(
+    `/api/loans/applications${query ? `?${query}` : ""}`,
+  );
+  return res.loans ?? [];
+}
 
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  } catch (err) {
-    if (err instanceof Error) throw err;
-    throw new Error("Could not download CV.");
-  }
+/** `GET /api/loans/applications/:id` → `{ loan: {...} }`. */
+export async function fetchLoan(id: string): Promise<AdminLoanDetail> {
+  const res = await adminFetch<{ loan: AdminLoanDetail }>(
+    `/api/loans/applications/${id}`,
+  );
+  return res.loan;
+}
+
+/** `PATCH /api/loans/applications/:id/status` → `{ loan: {...} }`. */
+export async function updateLoanStatus(
+  id: string,
+  status: LoanStatus,
+): Promise<AdminLoan> {
+  const res = await adminPatch<{ loan: AdminLoan }>(
+    `/api/loans/applications/${id}/status`,
+    { status },
+  );
+  return res.loan;
+}
+
+/** `GET /api/messages` → bare array of messages. */
+export async function fetchMessages(query = ""): Promise<AdminMessage[]> {
+  const res = await adminFetch<AdminMessage[]>(
+    `/api/messages${query ? `?${query}` : ""}`,
+  );
+  return Array.isArray(res) ? res : [];
 }

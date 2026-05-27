@@ -1,25 +1,19 @@
-import { ApplicantStatus } from "../../types";
+import type { LoanStatus } from "../../types";
+import { LOAN_STATUS_META } from "../../lib/adminFormat";
 
-const STYLES: Record<ApplicantStatus, string> = {
-  new: "bg-infobg text-brand",
-  review: "bg-amber-50 text-amber-700",
-  interview: "bg-emerald-50 text-emerald-700",
-  rejected: "bg-red-50 text-red-700",
-};
+export default function StatusBadge({ status }: { status: LoanStatus }) {
+  const meta = LOAN_STATUS_META[status] ?? {
+    label: status,
+    badge: "bg-slate-100 text-slate-700 ring-slate-600/20",
+    dot: "bg-slate-400",
+  };
 
-const LABELS: Record<ApplicantStatus, string> = {
-  new: "New",
-  review: "In Review",
-  interview: "Interview",
-  rejected: "Rejected",
-};
-
-export default function StatusBadge({ status }: { status: ApplicantStatus }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${STYLES[status]}`}
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset ${meta.badge}`}
     >
-      {LABELS[status]}
+      <span className={`h-1.5 w-1.5 rounded-full ${meta.dot}`} />
+      {meta.label}
     </span>
   );
 }

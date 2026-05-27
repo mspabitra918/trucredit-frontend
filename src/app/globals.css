@@ -41,21 +41,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-@layer components {
+/* @layer components {
   .container-x {
     @apply mx-auto w-full max-w-content px-6 md:px-12 lg:px-16;
   }
   .section-y {
     @apply py-24 md:py-32;
-  }
-  .btn-primary {
-    @apply inline-flex items-center justify-center rounded-btn bg-ink px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-ink/10 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
-  }
-  .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-btn border border-line bg-white px-8 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:bg-offwhite hover:border-ink/20 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
-  }
-  .btn-brand {
+  } */
+
+/* .btn-brand {
     @apply inline-flex items-center justify-center rounded-btn bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-brand/20 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
   }
   .card {
@@ -79,10 +73,9 @@ body {
   .h-section {
     @apply font-serif text-4xl leading-tight md:text-5xl;
   }
-}
+} */
 
-/* Custom Utilities */
-@layer utilities {
+/* @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
@@ -90,4 +83,4 @@ body {
     background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px);
     background-size: 30px 30px;
   }
-}
+} */

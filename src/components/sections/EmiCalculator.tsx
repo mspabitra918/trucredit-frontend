@@ -7,6 +7,13 @@ import { useMemo, useState } from "react";
 //     maximumFractionDigits: 0,
 //   }).format(value);
 // }
+export function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(amount);
+}
 
 type SliderProps = {
   label: string;
@@ -55,16 +62,14 @@ function Slider({
 export default function EmiCalculator() {
   const [amount, setAmount] = useState(2000);
   const [rate, setRate] = useState(10);
-  const [years, setYears] = useState(2);
+  const [term, setTerm] = useState(24);
 
-  const emi = useMemo(() => {
-    const principal = amount;
-    const monthlyRate = rate / 12 / 100;
-    const months = years * 12;
-    if (monthlyRate === 0) return principal / months;
-    const factor = Math.pow(1 + monthlyRate, months);
-    return (principal * monthlyRate * factor) / (factor - 1);
-  }, [amount, rate, years]);
+  // 10% APR amortization
+  const monthlyRate = 0.1 / 12;
+  const factor = Math.pow(1 + monthlyRate, term);
+  const monthlyPayment = (amount * (monthlyRate * factor)) / (factor - 1);
+  const totalRepayment = monthlyPayment * term;
+  const totalInterest = totalRepayment - amount;
 
   return (
     <section className="relative z-10 -mt-10 px-6 lg:px-10">
@@ -94,23 +99,41 @@ export default function EmiCalculator() {
           />
           <Slider
             label="Loan Tenure"
-            value={years}
-            min={1}
-            max={5}
-            step={1}
-            display={`${years} ${years === 1 ? "Year" : "Years"}`}
-            onChange={setYears}
+            value={term}
+            min={24}
+            max={60}
+            step={12}
+            display={`${term} months`}
+            onChange={setTerm}
           />
         </div>
 
         <div className="mt-9 flex flex-col items-center gap-4 rounded-2xl bg-[#F2FAF6] py-7">
-          <p className="text-sm font-medium text-gray-500">Your Monthly EMI</p>
-          <p className="text-4xl font-extrabold text-[#0B7A5A]">
-            ${emi.toFixed(2)}
-          </p>
-          <button className="rounded-xl bg-[#0B7A5A] px-8 py-3 font-semibold text-white shadow-lg shadow-[#0B7A5A]/20 transition hover:bg-[#08664b]">
-            Calculate EMI
-          </button>
+          <div className="bg-surface rounded-xl p-6 space-y-4">
+            <div className="flex justify-between items-center text-sm gap-26">
+              <span className="text-text-secondary">Fixed 10% APR</span>
+              <span className="font-semibold text-primary">
+                {formatCurrency(totalInterest)}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-text-secondary">Total Repayment</span>
+              <span className="font-semibold text-primary">
+                {formatCurrency(totalRepayment)}
+              </span>
+            </div>
+            <div className="border-t border-surface-dark pt-4 text-center">
+              <p className="text-sm text-text-secondary">
+                Your Monthly Payment
+              </p>
+              <p className="text-4xl font-bold text-primary mt-1">
+                {formatCurrency(monthlyPayment)}
+              </p>
+              <p className="text-xs text-text-secondary mt-1">
+                month for {term} months
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
