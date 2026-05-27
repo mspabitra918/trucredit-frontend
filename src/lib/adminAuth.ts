@@ -1,6 +1,6 @@
 export function getAdminToken(): string | null {
   if (typeof window === "undefined") return null;
-  return localStorage.getItem("yuba_admin_token");
+  return localStorage.getItem("trucredit_admin_token");
 }
 
 export function authHeaders(extra?: Record<string, string>): HeadersInit {
@@ -13,8 +13,8 @@ export function authHeaders(extra?: Record<string, string>): HeadersInit {
 
 export function clearAdminSession(): void {
   if (typeof window === "undefined") return;
-  localStorage.removeItem("yuba_admin_token");
-  localStorage.removeItem("yuba_admin_email");
+  localStorage.removeItem("trucredit_admin_token");
+  localStorage.removeItem("trucredit_admin_email");
 }
 
 export type AdminMeUser = {

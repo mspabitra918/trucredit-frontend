@@ -1,5 +1,5 @@
 export const API_URL =
-  // process.env.NEXT_PUBLIC_API_URL || "https://api.yubamedia.com";
+  // process.env.NEXT_PUBLIC_API_URL || "https://api.trucredit.com";
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export async function postJSON<T>(path: string, body: unknown): Promise<T> {

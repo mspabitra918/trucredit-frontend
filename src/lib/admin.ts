@@ -6,8 +6,8 @@ import type {
   LoanStatus,
 } from "../types";
 
-const TOKEN_KEY = "yuba_admin_token";
-const EMAIL_KEY = "yuba_admin_email";
+const TOKEN_KEY = "trucredit_admin_token";
+const EMAIL_KEY = "trucredit_admin_email";
 
 export function getToken(): string | null {
   if (typeof window === "undefined") return null;
