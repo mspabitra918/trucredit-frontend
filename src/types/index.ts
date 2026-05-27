@@ -1,3 +1,5 @@
+export type ApplicantStatus = "new" | "review" | "interview" | "rejected";
+
 export interface LoanApplication {
   id: string;
   // Personal Info
@@ -105,4 +107,42 @@ export interface RateInfo {
   minLoan: number;
   maxLoan: number;
   terms: string;
+}
+
+export interface Applicant {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  position: string;
+  experience: string;
+  location: string;
+  cvUrl: string;
+  coverLetter: string | null;
+  linkedinUrl: string | null;
+  availability: string | null;
+  status: ApplicantStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ApplicantStats {
+  total: number;
+  newThisWeek: number;
+  underReview: number;
+  interview: number;
+}
+
+export type InquiryType = "client" | "general";
+export interface Lead {
+  id: string;
+  fullName: string;
+  email: string;
+  company: string | null;
+  phone: string | null;
+  inquiryType: InquiryType;
+  message: string;
+  crmSynced: boolean;
+  created_at: string;
+  updated_at: string;
 }

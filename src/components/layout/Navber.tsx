@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Rates & Fees", href: "/rates-and-fees" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
+  { label: "Admin", href: "/admin" },
 ];
 
 export default function NavbarPage() {

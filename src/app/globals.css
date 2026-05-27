@@ -41,3 +41,53 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6 md:px-12 lg:px-16;
+  }
+  .section-y {
+    @apply py-24 md:py-32;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-btn bg-ink px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-ink/10 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-btn border border-line bg-white px-8 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:bg-offwhite hover:border-ink/20 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+  .btn-brand {
+    @apply inline-flex items-center justify-center rounded-btn bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-brand/20 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+  .card {
+    @apply rounded-card border border-line bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-ink/5 hover:-translate-y-1;
+  }
+  .input {
+    @apply h-12 w-full rounded-md border border-line bg-white px-4 text-sm text-ink transition-all duration-200 placeholder:text-muted focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10;
+  }
+  .textarea {
+    @apply min-h-[150px] w-full rounded-md border border-line bg-white p-4 text-sm text-ink transition-all duration-200 placeholder:text-muted focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10;
+  }
+  .label {
+    @apply mb-2 block text-xs font-bold uppercase tracking-widest text-muted;
+  }
+  .eyebrow {
+    @apply inline-block rounded-full bg-infobg px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-brand mb-6;
+  }
+  .h-display {
+    @apply font-serif text-5xl leading-[1.1] tracking-tight md:text-7xl;
+  }
+  .h-section {
+    @apply font-serif text-4xl leading-tight md:text-5xl;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grid {
+    background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
