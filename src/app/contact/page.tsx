@@ -29,8 +29,8 @@ const details = [
   {
     icon: IoLocationOutline,
     label: "Office",
-    value: "Bandra Kurla Complex",
-    sub: "Mumbai, Maharashtra 400051",
+    value: "California-Based Support",
+    sub: "355 S Grand Ave, Office #2 W Los Angeles, CA 90071",
   },
   {
     icon: IoTimeOutline,
