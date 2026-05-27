@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -6,14 +6,8 @@ interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
 }
 
-export const InputField: React.FC<InputFieldProps> = ({
-  label,
-  error,
-  icon,
-  className = "",
-  id,
-  ...props
-}) => {
+export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
+  ({ label, error, icon, className = "", id, ...props }, ref) => {
   return (
     <div className="group">
       <label
@@ -30,6 +24,7 @@ export const InputField: React.FC<InputFieldProps> = ({
         )}
         <input
           id={id}
+          ref={ref}
           className={`w-full ${
             icon ? "pl-11" : "px-4"
           } py-3.5 bg-gray-50 border-2 rounded-xl transition-all outline-none text-gray-900 font-medium placeholder:text-gray-400 ${
@@ -40,10 +35,15 @@ export const InputField: React.FC<InputFieldProps> = ({
           {...props}
         />
       </div>
-      {error && <p className="text-error text-xs font-semibold mt-1.5 ml-1">{error}</p>}
+      {error && (
+        <p className="text-error text-xs font-semibold mt-1.5 ml-1">{error}</p>
+      )}
     </div>
   );
-};
+  }
+);
+
+InputField.displayName = "InputField";
 
 interface SelectFieldProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
@@ -88,12 +88,24 @@ export const SelectField: React.FC<SelectFieldProps> = ({
           {children}
         </select>
         <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </div>
       </div>
-      {error && <p className="text-error text-xs font-semibold mt-1.5 ml-1">{error}</p>}
+      {error && (
+        <p className="text-error text-xs font-semibold mt-1.5 ml-1">{error}</p>
+      )}
     </div>
   );
 };
