@@ -26,7 +26,15 @@ export default function AdminMessagesPage() {
     setError(null);
     try {
       const params = new URLSearchParams();
-      if (date) params.set("date", date);
+      // if (date) params.set("date", date);
+      const trimmedSearch = search.trim();
+
+      if (trimmedSearch) {
+        params.set("q", trimmedSearch);
+      } else if (date) {
+        params.set("date", date);
+        params.set("tzOffset", String(new Date().getTimezoneOffset()));
+      }
       const data = await fetchMessages(params.toString());
       setMessages(data);
     } catch (err) {

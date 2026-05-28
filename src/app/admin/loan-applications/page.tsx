@@ -41,11 +41,20 @@ export default function AdminLoanApplicationsPage() {
     setError(null);
     try {
       const params = new URLSearchParams();
-      if (search.trim()) params.set("q", search.trim());
-      if (date) {
+      // if (search.trim()) params.set("q", search.trim());
+      // if (date) {
+      //   params.set("date", date);
+      //   params.set("tzOffset", String(new Date().getTimezoneOffset()));
+      // }
+      const trimmedSearch = search.trim();
+
+      if (trimmedSearch) {
+        params.set("q", trimmedSearch);
+      } else if (date) {
         params.set("date", date);
         params.set("tzOffset", String(new Date().getTimezoneOffset()));
       }
+
       const data = await fetchLoans(params.toString());
       setLoans(data);
     } catch (err) {
@@ -85,9 +94,16 @@ export default function AdminLoanApplicationsPage() {
   }
 
   function resetFilters() {
+    const today = new Date().toISOString().split("T")[0];
+
     setSearch("");
     setStatusFilter("all");
-    setDate(new Date().toISOString().split("T")[0]);
+    setDate(today);
+
+    const params = new URLSearchParams();
+    params.set("date", today);
+
+    fetchLoans(params.toString()).then(setLoans);
   }
 
   return (
