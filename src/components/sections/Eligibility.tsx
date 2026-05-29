@@ -4,10 +4,10 @@ import Link from "next/link";
 import { IoCheckmarkCircle } from "react-icons/io5";
 
 const points = [
-  "Age between 21 and 60 years",
-  "Minimum monthly income of $180",
-  "Valid PAN and Aadhaar card",
-  "Active bank account for 6+ months",
+  "U.S. citizen or permanent resident, 18 years or older",
+  "Minimum monthly income of $1,500",
+  "Valid SSN and government-issued photo ID",
+  "Active U.S. checking account for 3+ months",
 ];
 
 export default function Eligibility() {

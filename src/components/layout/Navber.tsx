@@ -7,7 +7,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "EMI Calculator", href: "/emi-calculator" },
+  { label: "Loan Calculator", href: "/emi-calculator" },
   { label: "Rates & Fees", href: "/rates-and-fees" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },

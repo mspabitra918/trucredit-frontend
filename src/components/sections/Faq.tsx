@@ -5,24 +5,24 @@ import { IoChevronDown } from "react-icons/io5";
 
 const faqs = [
   {
-    q: "What is the minimum salary required?",
-    a: "You need a minimum monthly income of $180 to be eligible for a personal loan with TruCredit.",
+    q: "What is the minimum income required?",
+    a: "You need a minimum monthly income of $1,500 to be eligible for a personal loan with TruCredit.",
   },
   {
     q: "How quickly will I get the funds?",
-    a: "Once approved, funds are typically disbursed to your bank account within 24 hours, often much sooner.",
+    a: "Once approved, funds are deposited to your U.S. bank account via ACH, typically by the next business day.",
   },
   {
     q: "Is there any prepayment penalty?",
-    a: "No. You can prepay or foreclose your loan anytime after the first EMI with zero additional charges.",
+    a: "No. You can pay off your loan early at any time with zero additional charges or fees.",
   },
   {
     q: "What documents do I need?",
-    a: "Just your PAN card, Aadhaar card, and recent bank statements. The entire process is fully digital.",
+    a: "Just your Social Security number, a government-issued photo ID, and recent bank statements or pay stubs. The entire process is fully digital.",
   },
   {
     q: "Will checking eligibility affect my credit score?",
-    a: "No. Checking your eligibility is a soft enquiry and has no impact on your credit score.",
+    a: "No. Checking your rate uses a soft credit inquiry and has no impact on your credit score.",
   },
 ];
 

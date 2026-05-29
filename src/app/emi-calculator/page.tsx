@@ -3,18 +3,18 @@ import PageHeader from "../../components/sections/PageHeader";
 import EmiCalculator from "../../components/sections/EmiCalculator";
 
 export const metadata: Metadata = {
-  title: "EMI Calculator — TruCredit",
+  title: "Loan Calculator — TruCredit",
   description:
-    "Estimate your monthly EMI instantly. Adjust loan amount, interest rate and tenure.",
+    "Estimate your monthly loan payment instantly. Adjust loan amount, APR, and term.",
 };
 
 export default function EmiCalculatorPage() {
   return (
     <div className="pb-24">
       <PageHeader
-        title="EMI"
+        title="Loan"
         highlight="Calculator"
-        subtitle="Plan your repayments. Move the sliders to see your monthly EMI update instantly."
+        subtitle="Plan your payments. Move the sliders to see your monthly payment update instantly."
       />
       <EmiCalculator />
     </div>

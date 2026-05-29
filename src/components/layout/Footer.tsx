@@ -9,7 +9,7 @@ const columns = [
     links: [
       { name: "Home", href: "/" },
       { name: "How It Works", href: "/how-it-works" },
-      { name: "EMI Calculator", href: "/emi-calculator" },
+      { name: "Loan Calculator", href: "/emi-calculator" },
       { name: "Rates & Fees", href: "/rates-and-fees" },
       { name: "FAQ", href: "/faq" },
       { name: "Contact", href: "/contact" },

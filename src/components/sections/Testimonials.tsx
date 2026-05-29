@@ -2,22 +2,22 @@ import { IoStar } from "react-icons/io5";
 
 const reviews = [
   {
-    name: "Rohit Sharma",
-    role: "Salaried, Mumbai",
+    name: "Michael Johnson",
+    role: "Employed, Chicago, IL",
     text: "The whole process was smooth and quick. I got my loan approved within minutes — completely paperless!",
-    initials: "RS",
+    initials: "MJ",
   },
   {
-    name: "Priya Verma",
-    role: "Self-employed, Delhi",
+    name: "Sarah Martinez",
+    role: "Self-employed, Austin, TX",
     text: "Transparent rates and no hidden charges. TruCredit made financing my business expansion stress-free.",
-    initials: "PV",
+    initials: "SM",
   },
   {
-    name: "Arjun Nair",
-    role: "Business owner, Kochi",
-    text: "Excellent support and the EMI calculator helped me plan perfectly. Highly recommend their service.",
-    initials: "AN",
+    name: "David Thompson",
+    role: "Small business owner, Los Angeles, CA",
+    text: "Excellent support and the loan calculator helped me plan perfectly. Highly recommend their service.",
+    initials: "DT",
   },
 ];
 
@@ -29,7 +29,7 @@ export default function Testimonials() {
           What our customers say
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-gray-500">
-          Trusted by thousands of happy borrowers across India.
+          Trusted by thousands of happy borrowers across the United States.
         </p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">

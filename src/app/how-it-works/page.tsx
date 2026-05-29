@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 const stats = [
   { value: "2 min", label: "To check your rate" },
-  { value: "24 hrs", label: "Average disbursal" },
-  { value: "₹0", label: "Upfront fees" },
+  { value: "Next day", label: "Average funding (ACH)" },
+  { value: "$0", label: "Upfront fees" },
 ];
 
 const steps = [
@@ -27,8 +27,8 @@ const steps = [
     desc: "Tell us a little about yourself and the amount you need. It takes under two minutes and uses a soft credit check.",
     points: [
       "No impact on your credit score",
-      "No upfront or hidden charges",
-      "Instant, real-time decisioning",
+      "No upfront or hidden fees",
+      "Instant, real-time decisions",
       "100% online — no branch visits",
     ],
   },
@@ -38,9 +38,9 @@ const steps = [
     title: "Choose Your Terms",
     desc: "Review your personalised offer and pick a repayment plan that fits your budget. What you see is exactly what you pay.",
     points: [
-      "Flexible tenure from 12 to 60 months",
-      "Transparent EMIs, fixed for the term",
-      "No prepayment or foreclosure penalty",
+      "Flexible terms from 24 to 60 months",
+      "Transparent fixed monthly payments",
+      "No prepayment or early payoff penalty",
       "Adjust amount before you accept",
     ],
   },
@@ -48,11 +48,11 @@ const steps = [
     n: "03",
     icon: IoWalletOutline,
     title: "Get Funded",
-    desc: "Accept your offer and complete a quick verification. Funds are credited straight to your bank account.",
+    desc: "Accept your offer and complete a quick verification. Funds are deposited straight to your U.S. bank account via ACH.",
     points: [
-      "Money disbursed within 24 hours",
-      "Direct transfer to your bank account",
-      "Dedicated support throughout",
+      "Funds typically available next business day",
+      "Direct ACH deposit to your bank account",
+      "Dedicated U.S.-based support throughout",
       "Manage everything from your dashboard",
     ],
   },

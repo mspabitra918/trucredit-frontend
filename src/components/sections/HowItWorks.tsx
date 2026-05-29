@@ -88,9 +88,9 @@ export default function HowItWorks() {
                     <option value="" disabled>
                       Select
                     </option>
-                    <option>$500</option>
-                    <option>$1,000 - $2,000</option>
-                    <option>$2,000+</option>
+                    <option>$1,500 - $3,000</option>
+                    <option>$3,000 - $6,000</option>
+                    <option>$6,000+</option>
                   </select>
                 </div>
                 <div>
@@ -111,7 +111,7 @@ export default function HowItWorks() {
                   </label>
                   <input
                     className={inputClass}
-                    placeholder="₹5,00,000"
+                    placeholder="$5,000"
                     inputMode="numeric"
                   />
                 </div>
@@ -123,9 +123,9 @@ export default function HowItWorks() {
                     <option value="" disabled>
                       Select
                     </option>
-                    <option>Salaried</option>
+                    <option>Employed</option>
                     <option>Self-employed</option>
-                    <option>Business owner</option>
+                    <option>Retired</option>
                   </select>
                 </div>
               </div>

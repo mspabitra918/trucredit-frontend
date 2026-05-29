@@ -50,6 +50,8 @@ export default function AdminLoanApplicationsPage() {
 
       if (trimmedSearch) {
         params.set("q", trimmedSearch);
+      } else if (statusFilter !== "all") {
+        params.set("status", statusFilter);
       } else if (date) {
         params.set("date", date);
         params.set("tzOffset", String(new Date().getTimezoneOffset()));
@@ -64,12 +66,10 @@ export default function AdminLoanApplicationsPage() {
     }
   }
 
-  // Refetch when the server-side filters (date) change. Search is applied via
-  // the form submit / search button to avoid a request per keystroke.
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date]);
+  }, [date, statusFilter]);
 
   const filtered = useMemo(
     () =>

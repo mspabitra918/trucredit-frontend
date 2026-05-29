@@ -2,11 +2,6 @@
 
 import { useState } from "react";
 
-// function formatINR(value: number) {
-//   return new Intl.NumberFormat("en-IN", {
-//     maximumFractionDigits: 0,
-//   }).format(value);
-// }
 export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -75,7 +70,7 @@ export default function EmiCalculator() {
     <section className="relative z-10 -mt-10 px-6 lg:px-10">
       <div className="mx-auto max-w-5xl rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-200/60 sm:p-10">
         <h2 className="mb-8 text-center text-2xl font-bold text-gray-900">
-          EMI Calculator
+          Loan Payment Calculator
         </h2>
 
         <div className="grid gap-8 lg:grid-cols-3">
@@ -98,7 +93,7 @@ export default function EmiCalculator() {
             onChange={setRate}
           />
           <Slider
-            label="Loan Tenure"
+            label="Loan Term"
             value={term}
             min={24}
             max={60}
@@ -111,7 +106,7 @@ export default function EmiCalculator() {
         <div className="mt-9 flex flex-col items-center gap-4 rounded-2xl bg-[#F2FAF6] py-7">
           <div className="bg-surface rounded-xl p-6 space-y-4">
             <div className="flex justify-between items-center text-sm gap-26">
-              <span className="text-text-secondary">Fixed 10% APR</span>
+              <span className="text-text-secondary">Total Interest</span>
               <span className="font-semibold text-primary">
                 {formatCurrency(totalInterest)}
               </span>

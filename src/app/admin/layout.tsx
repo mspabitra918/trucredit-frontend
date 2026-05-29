@@ -89,43 +89,45 @@ export default function AdminLayout({
   }
 
   const SidebarBody = () => (
-    <>
-      <div className="flex items-center gap-2.5 border-b border-slate-200 px-6 py-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0B7A5A] text-sm font-bold text-white">
-          TC
+    <div className="fixed flex h-full w-64 flex-col justify-between border-r border-slate-200 bg-white">
+      <div>
+        <div className="flex items-center gap-2.5 border-b border-slate-200 px-6 py-5 ">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0B7A5A] text-sm font-bold text-white">
+            TC
+          </div>
+          <div className="leading-tight">
+            <p className="text-sm font-semibold text-slate-900">TruCredit</p>
+            <p className="text-xs text-slate-400">Admin Console</p>
+          </div>
         </div>
-        <div className="leading-tight">
-          <p className="text-sm font-semibold text-slate-900">TruCredit</p>
-          <p className="text-xs text-slate-400">Admin Console</p>
-        </div>
+
+        <nav className="flex flex-1 flex-col gap-1 p-3">
+          <p className="px-3 pb-2 pt-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+            Menu
+          </p>
+          {adminLinks.map((l) => {
+            const active = pathname.startsWith(l.href);
+            const Icon = l.icon;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                  active
+                    ? "bg-[#0B7A5A]/10 text-[#0B7A5A]"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                }`}
+              >
+                <Icon className="h-4.5 w-4.5" size={18} />
+                {l.label}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
-      <nav className="flex flex-1 flex-col gap-1 p-3">
-        <p className="px-3 pb-2 pt-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-          Menu
-        </p>
-        {adminLinks.map((l) => {
-          const active = pathname.startsWith(l.href);
-          const Icon = l.icon;
-          return (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
-                active
-                  ? "bg-[#0B7A5A]/10 text-[#0B7A5A]"
-                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-              }`}
-            >
-              <Icon className="h-4.5 w-4.5" size={18} />
-              {l.label}
-            </Link>
-          );
-        })}
-      </nav>
-
-      <div className="border-t border-slate-200 p-3">
+      <div className="border-t border-slate-200 p-3 ">
         <div className="flex items-center gap-3 rounded-lg px-3 py-2">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold text-slate-600">
             {initials(email || "Admin")}
@@ -152,7 +154,7 @@ export default function AdminLayout({
           Back to website
         </Link>
       </div>
-    </>
+    </div>
   );
 
   return (

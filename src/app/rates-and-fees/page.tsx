@@ -13,44 +13,44 @@ export const metadata: Metadata = {
 };
 
 const heroStats = [
-  { value: "10%", label: "Starting rate (p.a.)" },
+  { value: "10%", label: "Fixed APR" },
   { value: "$0", label: "Upfront fees" },
-  { value: "24–60", label: "Months tenure" },
+  { value: "24–60", label: "Month terms" },
 ];
 
 const feeSchedule = [
   { type: "Origination fee", amount: "$0" },
   { type: "Upfront processing fee", amount: "$0" },
-  { type: "Prepayment / foreclosure", amount: "None" },
+  { type: "Prepayment / early payoff", amount: "None" },
   { type: "Late payment fee", amount: "$50 (after grace period)" },
   { type: "Application fee", amount: "$0" },
-  { type: "GST", amount: "As applicable" },
+  { type: "Returned payment (NSF) fee", amount: "Up to $25" },
 ];
 
 const rateTiers = [
-  { product: "Personal Loan", rate: "10%", range: "$2,000 – $10,000" },
-  { product: "Business Loan", rate: "10%", range: "$2,000 – $10,000" },
-  { product: "Home Loan", rate: "10%", range: "$2,000 – $10,000" },
-  { product: "Education Loan", rate: "10%", range: "$2,000 – $10,000" },
+  { product: "Personal Loan", rate: "10% APR", range: "$2,000 – $10,000" },
+  { product: "Debt Consolidation", rate: "10% APR", range: "$2,000 – $10,000" },
+  { product: "Home Improvement", rate: "10% APR", range: "$2,000 – $10,000" },
+  { product: "Medical Expenses", rate: "10% APR", range: "$2,000 – $10,000" },
 ];
 
 const examples = [
   {
     amount: "$2,000",
-    detail: "for 24 months at 10% p.a.",
-    emi: "$2,214.96",
+    detail: "for 24 months at 10% APR",
+    emi: "$92.29",
     note: "Less than most monthly rent commitments.",
   },
   {
     amount: "$5,000",
-    detail: "for 36 months at 10% p.a.",
-    emi: "$5,808.09",
-    note: "A comfortable EMI for salaried borrowers.",
+    detail: "for 36 months at 10% APR",
+    emi: "$161.34",
+    note: "A comfortable monthly payment for most U.S. borrowers.",
   },
   {
     amount: "$10,000",
-    detail: "for 48 months at 10% p.a.",
-    emi: "$12,174.04",
+    detail: "for 48 months at 10% APR",
+    emi: "$253.63",
     note: "Spread larger needs over a longer term.",
   },
 ];
@@ -64,7 +64,7 @@ const trust = [
   {
     icon: IoShieldCheckmarkOutline,
     title: "$0 upfront guarantee",
-    desc: "You never pay before disbursal.",
+    desc: "You never pay before funds are deposited.",
   },
   {
     icon: IoFlashOutline,
@@ -130,16 +130,14 @@ export default function RatesAndFeesPage() {
 
         {/* Rates by product */}
         <h2 className="mt-16 mb-6 text-2xl font-bold text-gray-900">
-          Interest Rates by Product
+          APR by Loan Purpose
         </h2>
         <div className="overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
           <table className="w-full text-left">
             <thead className="bg-[#0B7A5A] text-sm text-white">
               <tr>
-                <th className="px-6 py-4 font-semibold">Product</th>
-                <th className="px-6 py-4 font-semibold">
-                  Interest Rate (p.a.)
-                </th>
+                <th className="px-6 py-4 font-semibold">Loan Purpose</th>
+                <th className="px-6 py-4 font-semibold">APR</th>
                 <th className="px-6 py-4 font-semibold">Loan Range</th>
               </tr>
             </thead>
@@ -157,7 +155,7 @@ export default function RatesAndFeesPage() {
           </table>
         </div>
         <p className="mt-3 text-xs text-gray-400">
-          Final rate depends on your credit profile, income and loan amount.
+          Your final APR depends on your credit profile, income, and loan amount.
         </p>
 
         {/* Loan examples */}
@@ -176,7 +174,7 @@ export default function RatesAndFeesPage() {
               </p>
               <p className="mt-1 text-sm text-gray-500">{ex.detail}</p>
               <div className="my-5 border-t border-dashed border-gray-200" />
-              <p className="text-sm text-gray-400">Monthly EMI</p>
+              <p className="text-sm text-gray-400">Monthly Payment</p>
               <p className="text-2xl font-extrabold text-[#0B7A5A]">{ex.emi}</p>
               <p className="mt-3 text-sm text-gray-500">{ex.note}</p>
             </div>
@@ -204,7 +202,7 @@ export default function RatesAndFeesPage() {
         {/* CTA */}
         <div className="mt-16 rounded-3xl bg-gradient-to-br from-[#0B7A5A] to-[#08664b] px-8 py-14 text-center shadow-2xl shadow-[#0B7A5A]/30">
           <h2 className="text-3xl font-bold text-white">
-            See your personalised rate
+            See your personalized rate
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-white/80">
             Checking is free and won&apos;t affect your credit score.

@@ -17,26 +17,26 @@ const details = [
   {
     icon: IoCallOutline,
     label: "Phone",
-    value: "1800 123 4567",
-    sub: "Toll-free, all India",
+    value: "(747) 200-5228",
+    sub: "Toll-free, U.S.-based support",
   },
   {
     icon: IoMailOutline,
     label: "Email",
-    value: "support@trucredit.in",
+    value: "support@trucredit.com",
     sub: "We reply within 24 hours",
   },
   {
     icon: IoLocationOutline,
     label: "Office",
-    value: "California-Based Support",
-    sub: "355 S Grand Ave, Office #2 W Los Angeles, CA 90071",
+    value: "U.S.-based Headquarters",
+    sub: "3455 S Ashland Ave, Chicago, IL 60608",
   },
   {
     icon: IoTimeOutline,
     label: "Hours",
-    value: "Mon – Sat, 9am – 7pm",
-    sub: "Closed on public holidays",
+    value: "Mon – Fri, 8am – 5pm PST",
+    sub: "Closed weekends and federal holidays",
   },
 ];
 
